@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { fetchSingleStockController } from "../controllers/CurrencyController";
+import { fetchAllStocksController, fetchSingleStockController } from "../controllers/StockController";
 
 const router = require('express').Router();
 require('dotenv').config();
@@ -11,5 +11,8 @@ router.get('/test', (req: Request, res: Response) => {
 
 // fetch single stock route
 router.get("/fetchSingleStock", fetchSingleStockController);
+
+// fetch all stocks route 
+router.get("/fetchAllStocks", fetchAllStocksController);
 
 export default router;

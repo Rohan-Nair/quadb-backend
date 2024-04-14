@@ -6,6 +6,12 @@ export const fetchSingleStockController = async (req: Request, res: Response) =>
     const currencyPair = await CurrencyPair.findOne(
         { 'data.name': name }
     )
-    console.log(currencyPair);
+    // console.log(currencyPair);
     res.send(currencyPair);
+};
+
+export const fetchAllStocksController = async (req: Request, res: Response) => {
+    const currencyPairs = await CurrencyPair.find();
+    // console.log(currencyPairs);
+    res.send(currencyPairs);
 };

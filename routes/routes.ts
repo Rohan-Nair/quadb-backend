@@ -1,21 +1,15 @@
 import { Request, Response } from "express";
-import CurrencyPair from "../models/CurrencyModel";
+import { fetchSingleStockController } from "../controllers/CurrencyController";
 
 const router = require('express').Router();
 require('dotenv').config();
 
+//test route
 router.get('/test', (req: Request, res: Response) => {
-    res.send('Hello World!');
+    res.send('Hello from the backend!');
 });
 
-
-router.get("/fetchSingleStock", async (req: Request, res: Response) => {
-    const { name } = req.body;
-    const currencyPair = await CurrencyPair.findOne(
-        { 'data.name': name }
-    )
-    console.log(currencyPair);
-    res.send(currencyPair);
-});
+// fetch single stock route
+router.get("/fetchSingleStock", fetchSingleStockController);
 
 export default router;

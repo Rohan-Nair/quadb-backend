@@ -15,6 +15,10 @@ app.use(cors());
 // connection to the database
 connect();
 
+app.use("/api", routes)
+app.use("/", async (req, res) => {
+    res.json("hello world");
+})
 
 interface ApiData {
     base_unit: string,
@@ -59,7 +63,6 @@ const fetchAllStocks = async () => {
 fetchAllStocks();
 cron.schedule('*/5 * * * *', fetchAllStocks);
 
-app.use("/api", routes)
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

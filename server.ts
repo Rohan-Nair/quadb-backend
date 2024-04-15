@@ -5,9 +5,12 @@ import axios from "axios";
 import cron from 'node-cron';
 import { connect } from "./db/dbConfig";
 import CurrencyPair from "./models/CurrencyModel";
+import cors from "cors";
 
 // creating the app 
 const app = express();
+
+app.use(cors());
 
 // connection to the database
 connect();
